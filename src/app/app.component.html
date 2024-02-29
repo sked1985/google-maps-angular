@@ -23,11 +23,26 @@
         [zoom]="zoom"
         (mapClick)="addMarker($event)">
         <ng-container *ngFor="let position of markerPositions; let i = index">
-          <map-marker #marker="mapMarker" (mapClick)="openInfoWindow(marker)" [clickable]="true"
-            [position]="position" [options]="getOptions(position)">
+          <map-marker #marker="mapMarker" (mapClick)="openInfoWindow(i, marker)" [clickable]="true"
+            [position]="position" [options]="getOptions(i)">
           </map-marker>
-        </ng-container>
-        <map-info-window>Info Window content</map-info-window>
+        <map-info-window>
+         <div>
+          <img [src]="infoContent.image" alt="Uploaded Image" class="avatarImage" style="vertical-align: middle;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          border: 3px solid #3f51b5;
+          margin: 10px;
+          position: absolute;
+          top: 0px;
+          right: -10px;">
+          <h3>{{infoContent.name}}</h3>
+         </div>
+          <span>{{infoContent.about}}</span>
+        </map-info-window>
+        <!-- <map-info-window [innerHTML]="infoContent"></map-info-window> -->
+      </ng-container>
       </google-map>
     </div>
   </div>
