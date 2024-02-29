@@ -12,7 +12,7 @@
   </mat-form-field>
   <div>
     <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="csvInputChange($event)"/>
-    <button mat-flat-button color="primary" (click)="csvInput.click()">Choose Spreadsheet File (CSV)</button>
+    <button mat-flat-button color="primary" (click)="csvInput.click()">Choose an Image</button>
   </div>
   <div>
     <img [src]="imageUrl" alt="Uploaded Image" class="avatarImage">
