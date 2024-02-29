@@ -3,7 +3,7 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>Add your location</span>
+    <span>Clio Location Adder</span>
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>favorite</mat-icon>
@@ -28,20 +28,11 @@
           </map-marker>
         <map-info-window>
          <div>
-          <img [src]="infoContent.image" alt="Uploaded Image" class="avatarImage" style="vertical-align: middle;
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          border: 3px solid #3f51b5;
-          margin: 10px;
-          position: absolute;
-          top: 0px;
-          right: -10px;">
+          <img [src]="infoContent.image" alt="Uploaded Image">
           <h3>{{infoContent.name}}</h3>
          </div>
           <span>{{infoContent.about}}</span>
         </map-info-window>
-        <!-- <map-info-window [innerHTML]="infoContent"></map-info-window> -->
       </ng-container>
       </google-map>
     </div>
