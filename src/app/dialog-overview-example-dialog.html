@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Add a pin</h2>
+<mat-dialog-content>
+  <p>Pin type:</p>
+  <!-- <mat-radio-group aria-label="Select an option">
+    <mat-radio-button value="1">Option 1</mat-radio-button>
+    <mat-radio-button value="2">Option 2</mat-radio-button>
+  </mat-radio-group> -->
+  
+  <mat-form-field>
+    <mat-label>Pin Name</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+  <div>
+    <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="csvInputChange($event)"/>
+    <button mat-flat-button color="primary" (click)="csvInput.click()">Choose Spreadsheet File (CSV)</button>
+  </div>
+  <div>
+    <img [src]="imageUrl" alt="Uploaded Image" class="avatarImage">
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data" >Submit</button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+</mat-dialog-actions>
+
