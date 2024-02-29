@@ -5,10 +5,16 @@
     <img [src]="imageUrl" alt="Uploaded Image" class="avatarImage">
   </div>
   
-  <mat-form-field>
-    <mat-label>Pin Name</mat-label>
-    <input matInput [(ngModel)]="data.name">
-  </mat-form-field>
+  <div style="display: flex; flex-direction: column;">
+    <mat-form-field>
+      <mat-label>Pin Name</mat-label>
+      <input matInput [(ngModel)]="data.name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>About</mat-label>
+      <textarea matInput [(ngModel)]="data.about"></textarea>
+    </mat-form-field>
+  </div>
   <div>
     <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="csvInputChange($event)"/>
     <button mat-flat-button color="primary" (click)="csvInput.click()">Choose an Image</button>

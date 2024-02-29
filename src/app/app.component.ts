@@ -18,8 +18,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatRadioModule} from '@angular/material/radio';
+import ImageHelper from './image-helper';
 
 export interface DialogData {
+  about: string;
   name: string;
   imageUrl: string
 }
@@ -58,7 +60,7 @@ infoContent: any = "";
 
   addMarker(event: google.maps.MapMouseEvent) {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      data: {name: "", imageUrl: ""},
+      data: {about: "", name: "", imageUrl: ""},
     });
 
     dialogRef.afterClosed().subscribe(result => {
