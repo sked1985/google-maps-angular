@@ -39,7 +39,8 @@ export class AppComponent {
   @ViewChildren(MapMarker) markers: QueryList<MapMarker> | undefined;
 
   center: google.maps.LatLngLiteral = {lat: 53, lng: -9};
-  markerPositions: any[] = [{lat: 53.336997813251976, lng: -6.273000240325928}, {lat: 53.99332786725599, lng: -7.379516601562508}, {lat: 51.88167052358272, lng: -8.406738281250007}, {lat: 53.3793001185126, lng: -6.599628724121791}];
+  markerPositions: any[] = [{lat: 53.336997813251976, lng: -6.273000240325928}, {lat: 53.99332786725599, lng: -7.379516601562508}, {lat: 51.88167052358272, lng: -8.406738281250007}, {lat: 53.3793001185126, lng: -6.599628724121791}, 
+    {lat: 54.02054321865513, lng: -8.347636350013829}];
   zoom = 7;
   optionsDictionary: { [key: string]: any } = {
     0: {
@@ -70,13 +71,21 @@ export class AppComponent {
               url: "https://googlemapsimagestorage.blob.core.windows.net/images/images/sofia.png"
             }
     },
+    4: {
+      animation: google.maps.Animation.DROP,
+            icon: {
+              scaledSize: new google.maps.Size(30, 30),
+              url: "https://googlemapsimagestorage.blob.core.windows.net/images/images/david.png"
+            }
+    },
 };
 
 infoDictionary:  { [key: string]: { name: string; about: string; image: string} } = {
   0: { name: "Clio EMEA head office", about: "The head office for Clio EMEA", image: ImageHelper.getImage("clio")},
   1: { name: "Dave Hogan", about: "Development Manager at Clio", image: "https://googlemapsimagestorage.blob.core.windows.net/images/images/dave.png"},
   2: { name: "Tim O'Mahony", about: "Software Developer at Clio", image: "https://googlemapsimagestorage.blob.core.windows.net/images/images/tim.png"},
-  3: { name: "Sofia Tzima", about: "Senior Software Developer at Clio", image: "https://googlemapsimagestorage.blob.core.windows.net/images/images/sofia.png"}
+  3: { name: "Sofia Tzima", about: "Senior Software Developer at Clio", image: "https://googlemapsimagestorage.blob.core.windows.net/images/images/sofia.png"},
+  4: { name: "David Keanrney", about: "Software Developer at Clio", image: "https://googlemapsimagestorage.blob.core.windows.net/images/images/david.png"}
 };
 infoContent: any = "";
 
