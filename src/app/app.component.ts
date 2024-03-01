@@ -19,6 +19,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatRadioModule} from '@angular/material/radio';
 import ImageHelper from './image-helper';
+import { ImageUploadService } from './image-upload.service';
 
 export interface DialogData {
   about: string;
@@ -45,7 +46,7 @@ export class AppComponent {
       animation: google.maps.Animation.DROP,
             icon: {
               scaledSize: new google.maps.Size(30, 30),
-              url: ImageHelper.getImage("clio")
+              url: "https://googlemapsimagestorage.blob.core.windows.net/images/images/Screenshot%202024-02-29%20at%2012.03.09.png"
             }
     },
 };
@@ -71,7 +72,7 @@ infoContent: any = "";
         const newKey = (maxKey + 1);
 
         // Add a new entry with the new key
-        this.infoDictionary[newKey] = { name: result.name, about: result.about, image: ImageHelper.getImage(result.name) };
+        this.infoDictionary[newKey] = { name: result.name, about: result.about, image: result.imageUrl };
         this.optionsDictionary[newKey] = {
           animation: google.maps.Animation.DROP,
                 icon: {
@@ -129,6 +130,7 @@ export class DialogOverviewExampleDialog {
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private imageUploadService: ImageUploadService
   ) {}
   imageUrl: string = "";
   showImage = false;
@@ -137,12 +139,14 @@ export class DialogOverviewExampleDialog {
     this.dialogRef.close();
   }
 
-  csvInputChange(fileInputEvent: any) {
+  async csvInputChange(fileInputEvent: any) {
     const file = fileInputEvent.target.files[0];
+    await this.imageUploadService.uploadFile(file);
+      console.log('Image uploaded successfully.');
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      this.imageUrl = reader.result as string;
+      this.imageUrl = `https://googlemapsimagestorage.blob.core.windows.net/images/images/${file.name}`;
       this.data.imageUrl = this.imageUrl;
       this.showImage = true;
     };
