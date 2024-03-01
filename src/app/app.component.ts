@@ -83,6 +83,16 @@ infoContent: any = "";
  
   constructor(public dialog: MatDialog) {}
 
+  ngOnInit() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position);
+      this.center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+    });
+  }
+
   addMarker(event: google.maps.MapMouseEvent) {
     console.log(event?.latLng?.toJSON())
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
