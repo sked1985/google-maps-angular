@@ -46,7 +46,7 @@ export class AppComponent {
       animation: google.maps.Animation.DROP,
             icon: {
               scaledSize: new google.maps.Size(30, 30),
-              url: "https://googlemapsimagestorage.blob.core.windows.net/images/images/Screenshot%202024-02-29%20at%2012.03.09.png"
+              url: ImageHelper.getImage("clio")
             }
     },
 };
